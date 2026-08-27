@@ -1,5 +1,10 @@
 # Obsidian Academic Workspace
 
+## Required plugins
+
+- Kanban.
+- Tasks.
+
 ## Structure
 
 - The attachments folder contains all attachments such as screenshots.
@@ -116,7 +121,7 @@ Tasks.md
     └── task +Course-Name
              │
              ▼
-Dashboard / Trip / Project / Research / Course notes
+Dashboard / Trip / Project / Course
              │
              └── filtered Tasks views
 ```
