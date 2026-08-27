@@ -1,5 +1,0 @@
-# Teaching
-
-## Current courses
-
--

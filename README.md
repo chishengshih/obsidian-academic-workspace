@@ -1,378 +1,126 @@
 # Obsidian Academic Workspace
 
-A lightweight Obsidian vault template for academic work.
-
-The template supports:
-
-- administrative task management and academic CV source material;
-- concise research-project organization;
-- teaching preparation;
-- course, seminar, lecture, talk, and paper notes;
-- contact management;
-- daily task planning.
-
-## Intended scope
-
-This vault is **not** intended to contain extended mathematical research notes, long-form research diaries, or substantial documents such as papers, lecture notes, books, or preprints.
-
-Long mathematical writing is better kept in a dedicated LaTeX project or repository. Research-project notes in this vault are intended to remain concise and to record mainly objectives, current status, central ideas, open questions, references, collaborators, and next actions.
-
-Teaching notes in this vault are intended for preparation, planning, session notes, and organizational material. Full polished lecture notes or books are better kept in a dedicated writing project.
-
-## Folder structure
-
-```text
-Workspace/
-├── Home.md
-├── README.md
-├── Admin/
-│   ├── Admin.md
-│   ├── CV Source.md
-│   └── Admin Board.md
-├── Research/
-│   ├── Research.md
-│   └── Ideas and Questions.md
-├── Teaching/
-│   └── Teaching.md
-├── Notes/
-│   ├── Notes.md
-│   ├── Courses/
-│   ├── Seminars and Lectures/
-│   ├── Talks/
-│   └── Papers/
-├── Daily/
-├── Contacts/
-│   ├── Contacts.base
-│   └── People/
-├── _Attachments/
-└── _Templates/
-```
-
-Empty structural folders are preserved in Git with `.gitkeep` files.
-
-## Home dashboard
-
-`Home.md` is the main dashboard. It contains:
-
-- a link for opening today’s daily note;
-- instructions for preparing tomorrow’s daily note;
-- tasks scheduled for today;
-- unfinished tasks whose scheduled date has passed;
-- overdue deadlines;
-- a bounded list of unscheduled actionable tasks;
-- links to the main areas and active work.
-
-The dashboard is intentionally compact. It is not intended to reproduce a calendar or serve as a large database.
-
-## Admin
-
-The `Admin/` folder contains administrative work and academic reference material.
-
-```text
-Admin/Admin.md
-Admin/CV Source.md
-Admin/Admin Board.md
-```
-
-`CV Source.md` is a centralized source of accurate academic CV information. It is not a polished CV; it stores source material for later adaptation into CVs, bios, reports, applications, and institutional forms.
-
-`Admin Board.md` is the main administrative Kanban board, using:
-
-```text
-Inbox → Next → In progress → Waiting → Done
-```
-
-Substantial administrative processes, such as grant applications or reimbursements, can receive their own board from `_Templates/Admin Process Board.md`.
-
-## Research
-
-The `Research/` folder is for concise project organization, not extended mathematical writing.
-
-For a new project, create:
-
-```text
-Research/Project Name/
-└── Project Name.md
-```
-
-Then insert the `Research Project` template into the project home note.
-
-`Research/Ideas and Questions.md` is an incubator for short, undeveloped ideas or mathematical questions not yet assigned to an active project. Once an idea belongs to a project, the project note becomes the canonical location for its detailed formulation.
-
-A global research Kanban board is not included. A project-specific board may optionally be added for a bounded workflow that genuinely benefits from columns, using `_Templates/Research Workflow Board.md`.
-
-## Teaching
-
-The `Teaching/` folder is for courses being taught.
-
-For a new course, create:
-
-```text
-Teaching/Course Name/
-├── Course Name.md
-└── Classes/
-```
-
-Then insert the `Teaching Course` template into the course overview note.
-
-One note is used for each class session inside `Classes/`, normally using the `Teaching Class` template.
-
-Class times, office hours, appointments, and meetings are not reflected in the vault. Those belong in an external calendar.
-
-## Notes
-
-The `Notes/` folder is for notes taken from external material or expository material.
-
-```text
-Notes/Courses/
-Notes/Seminars and Lectures/
-Notes/Talks/
-Notes/Papers/
-```
-
-Intended usage:
-
-- `Notes/Courses/` — courses, summer schools, online courses, or extended learning activities being attended.
-- `Notes/Seminars and Lectures/` — standalone seminars, colloquia, invited lectures, and one-off talks being attended.
-- `Notes/Talks/` — notes and outlines for talks being given.
-- `Notes/Papers/` — one Markdown note per paper by default.
-
-For unusually involved paper reading, an adjacent reading board may be added, for example:
-
-```text
-Notes/Papers/bms16.md
-Notes/Papers/bms16 - Reading Board.md
-```
-
-The default remains one Markdown file per paper.
-
-## Paper-note naming convention
-
-Paper notes use compact alphanumeric filenames:
-
-- one author: first three letters of the surname plus two-digit year, for example `har77`;
-- multiple authors: first letter of each surname plus two-digit year, for example `km98` or `kmm87`;
-- collisions: append `a`, `b`, etc., for example `ser55a`.
-
-The `Paper Note` template includes fields for a citation key and an optional Zotero link.
-
-## Contacts
-
-Contacts live as one Markdown note per person in:
-
-```text
-Contacts/People/
-```
-
-The `Contact` template uses a small property schema:
-
-```yaml
-type: contact
-areas: []
-affiliation: ""
-email: ""
-homepage: ""
-```
-
-`Contacts/Contacts.base` provides table views for all contacts, research contacts, admin contacts, and teaching contacts.
-
-## Tasks
-
-The vault uses the Tasks community plugin.
-
-The organizing principle is:
-
-> Every task has one canonical location, normally the note that gives the task its context.
-
-Examples:
-
-- a research task belongs in the relevant project note;
-- a teaching-preparation task belongs in the relevant course or class note;
-- an administrative task belongs in the relevant administrative note or board.
-
-The same task should not be manually copied into a project note, a daily note, and a dashboard. `Home.md` and daily notes use Tasks queries to surface tasks from their canonical locations.
-
-### Scheduled dates and due dates
-
-- A **scheduled date** means the day on which work is intended to be done on the task.
-- A **due date** means a genuine deadline.
-
-Daily planning uses scheduled dates.
-
-```markdown
-- [ ] Prepare next class ⏳ 2026-07-04
-```
-
-## Daily planning
-
-Daily notes live in:
-
-```text
-Daily/YYYY-MM-DD.md
-```
-
-The intended workflow is:
-
-1. In the evening, tomorrow’s daily note is created manually in `Daily/`.
-2. The note is named in `YYYY-MM-DD` format.
-3. The `Daily Plan` template is inserted.
-4. Open tasks are reviewed from their original contexts.
-5. Tomorrow is added as the scheduled date to the chosen tasks.
-6. The chosen tasks appear automatically in tomorrow’s daily note.
-7. Completing a task from the daily note updates the original source task.
-
-The daily note is not a diary. It contains only loose planning blocks, a date-specific task query, and incidental notes.
-
-## Kanban boards
-
-The vault uses the Kanban community plugin for Markdown-backed boards.
-
-The main board is:
-
-```text
-Admin/Admin Board.md
-```
-
-Reusable starter boards live in `_Templates`:
-
-```text
-_Templates/Admin Process Board.md
-_Templates/Research Workflow Board.md
-_Templates/Paper Reading Board.md
-```
-
-These are clean starter boards to duplicate when needed, not formal Obsidian template files. Checkbox cards are preferred when Tasks compatibility is desired.
+## Structure
+
+- The attachments folder contains all attachments such as screenshots.
+- The templates folder contains all the templates, which are listed and explained in the Templates section below.
+- The courses folder contains course notes for courses that I attend.
+- The info folder contains useful info such as a note with all the relevant info for my CV.
+- The project folder contains notes and kanban boards for non-academic projects.
+- The research folder contains notes and kanban boards for academic projects, and it also contains a folder with notes and kanban boards for research papers that I read.
+- The trips folder contains notes to prepare and plan trips.
+- The tasks are handled by a single global tasks file, as exlpained in the Task Workflow section below.
 
 ## Templates
 
-The `_Templates/` folder contains note templates and starter boards.
+This vault uses a small set of templates with short, consistent names.
+
+**Naming rule:** the noun alone usually refers to the main note or hub; **Board** refers to a Kanban/progress-tracking note.
+
+### Template types
+
+- **Course** — hub and notes for a course I am taking or teaching.
+- **Lecture** — notes for a single lecture, either one I attend or one I teach.
+- **Paper** — notes, remarks, and ideas related to a research paper I have read or am reading.
+- **Paper Board** — Kanban board for tracking the progress of reading research papers.
+- **Project** — hub for a non-academic project.
+- **Project Board** — Kanban board for tracking the progress of a project.
+- **Research** — hub for an academic project.
+- **Talk** — notes for a research, seminar, or similar talk, either one I attend or one I give.
+- **Trip** — planning notes and information for a trip.
+
+## Task Workflow
+
+All tasks are stored in a single master note:
 
 ```text
-_Templates/
-├── Admin Process Board.md
-├── Contact.md
-├── Course Note.md
-├── Daily Plan.md
-├── Meeting Note.md
-├── Paper Note.md
-├── Paper Reading Board.md
-├── Research Project.md
-├── Research Workflow Board.md
-├── Seminar or Lecture Note.md
-├── Talk Note.md
-├── Teaching Class.md
-└── Teaching Course.md
+Tasks.md
 ```
 
-Intended usage:
+This file is the **single source of truth** for tasks in the vault. Tasks should be written as ordinary Markdown checkboxes, for example:
 
-- `Daily Plan` — daily notes in `Daily/YYYY-MM-DD.md`.
-- `Research Project` — concise project home notes.
-- `Teaching Course` — course overview notes for courses taught.
-- `Teaching Class` — notes for one class session in a course taught.
-- `Course Note` — notes for courses, summer schools, or online courses attended.
-- `Seminar or Lecture Note` — standalone seminars, lectures, or colloquia attended.
-- `Talk Note` — title, abstract, outline, and preparation notes for talks given.
-- `Paper Note` — one note per paper.
-- `Meeting Note` — meetings associated with projects, courses, or administrative processes.
-- `Contact` — one contact note in `Contacts/People/`.
-- `Admin Process Board` — substantial administrative processes.
-- `Research Workflow Board` — bounded research workflows.
-- `Paper Reading Board` — unusually involved paper reading.
+```markdown
+- [ ] Buy groceries
+- [ ] Book hotel +Japan-Trip
+- [ ] Read chapter 3 +Algebraic-Geometry-Course
+- [ ] Contact collaborator +Derived-Equivalence
+```
 
-## Attachments
+The [Tasks](https://github.com/obsidian-tasks-group/obsidian-tasks) plugin is used only to **display filtered views** of these tasks elsewhere in the vault. Completing a task from one of these views updates the corresponding task in `Tasks.md`.
 
-Attachments are centralized in:
+### Dashboard
+
+The Dashboard displays all open tasks from `Tasks.md`:
+
+````markdown
+```tasks
+not done
+filename includes Tasks.md
+hide backlinks
+hide task count
+hide toolbar
+hide edit button
+```
+````
+
+This provides a global overview without duplicating task data.
+
+### Assigning Tasks to Notes
+
+Tasks can be associated with a particular trip, project, research project, or course using a `todo.txt`-style `+Project` identifier.
+
+The identifier corresponds to the filename of the relevant note, without the `.md` extension.
+
+For example:
 
 ```text
-_Attachments/
+Japan-Trip.md                → +Japan-Trip
+Derived-Equivalence.md       → +Derived-Equivalence
+Algebraic-Geometry-Course.md → +Algebraic-Geometry-Course
 ```
 
-Obsidian should be configured so that pasted screenshots, images, PDFs, and other attachments are automatically stored there. See [Files and links](#files-and-links) below.
+A corresponding task in `Tasks.md` might therefore look like:
 
-## Zotero
+```markdown
+- [ ] Reserve accommodation +Japan-Trip
+- [ ] Check the literature on c2 +Derived-Equivalence
+- [ ] Prepare next lecture +Algebraic-Geometry-Course
+```
 
-This template does not require an Obsidian Zotero plugin. However, it is possible to use Zotero or Better BibTeX to maintain stable citation keys. The citation key and optional Zotero link are recorded in the corresponding paper note.
+For this reason, notes using this workflow should have filenames without spaces, using hyphens instead.
 
-## Required Obsidian configuration
+### To-do Sections in Notes
 
-This template intentionally does **not** include the `.obsidian/` configuration folder.
+The relevant templates contain a `## To-do` section that automatically displays the open tasks associated with that note.
 
-After opening the folder as an Obsidian vault, the following settings should be configured.
+This applies to:
 
-### Core plugins
+- project notes;
+- course notes;
+- trip notes.	
 
-Enable:
+Each of these notes uses its own filename as its `+Project` identifier. For example, the `## To-do` section of `Japan-Trip.md` displays open tasks containing `+Japan-Trip`.
 
-- Command palette
-- Daily notes
-- Templates
-- Bookmarks
-- Bases
+The task itself always remains in `Tasks.md`; the individual note only contains a filtered Tasks view.
 
-### Community plugins
+### General Convention
 
-Install and enable:
-
-- Tasks
-- Kanban
-
-### Files and links
+The resulting workflow is:
 
 ```text
-Default location for new attachments: _Attachments
+Tasks.md
+    │
+    ├── general task
+    ├── task +Trip-Name
+    ├── task +Project-Name
+    └── task +Course-Name
+             │
+             ▼
+Dashboard / Trip / Project / Research / Course notes
+             │
+             └── filtered Tasks views
 ```
 
-### Daily notes
+Use `Tasks.md` for editing and maintaining the master task list, and use the Dashboard and individual notes as contextual views of the same underlying tasks.
 
-```text
-Date format: YYYY-MM-DD
-New file location: Daily
-Template file location: _Templates/Daily Plan
-```
-
-### Templates
-
-```text
-Template folder location: _Templates
-```
-
-### Kanban
-
-For new boards, checkbox cards should be enabled whenever Tasks compatibility is desired.
-
-### Bookmarks
-
-`Home.md` should be bookmarked after the vault is opened. On desktop, it can also be pinned as a persistent tab.
-
-## Using this GitHub template
-
-### Option A: GitHub template repository
-
-1. The GitHub repository page is opened.
-2. **Use this template** is selected.
-3. **Create a new repository** is selected.
-4. A name and visibility are chosen.
-5. The new repository is cloned locally.
-6. The cloned folder is opened as an Obsidian vault.
-7. The configuration checklist above is followed.
-8. Generic placeholders are replaced with real projects, courses, contacts, and notes.
-
-This is appropriate when the personal vault is intended to remain a Git repository.
-
-### Option B: One-time download or copy
-
-1. The repository is downloaded as a ZIP file or cloned locally.
-2. The folder is copied to the location used for Obsidian vaults.
-3. The folder is renamed if desired.
-4. The folder is opened as an Obsidian vault.
-5. The configuration checklist above is followed.
-6. Generic placeholders are edited or replaced.
-
-This is appropriate when the vault is not intended to be maintained with Git.
-
-## Git and privacy notes
-
-This template intentionally excludes the `.obsidian/` configuration folder. A published repository should not contain Sync settings, workspace state, plugin code, private notes or any other sensitive data.
-
-If the template is maintained with Git, use a `.gitignore` excluding `.obsidian/`, `.trash/`, and local OS clutter. Empty structural folders may be preserved with `.gitkeep` files.
+Tasks that do not belong to any particular note can simply be left without a `+Project` identifier.
